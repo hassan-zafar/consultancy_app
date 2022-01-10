@@ -1,5 +1,7 @@
-import 'package:consultancy_app/Screens/home_screen.dart';
+import 'package:consultancy_app/Screens/home_page.dart';
 import 'package:flutter/material.dart';
+
+import 'Screens/courses_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +27,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const HomePage(),
+      routes: {
+        '/coursePage': (context) => const CoursePage(),
+      },
     );
   }
 }
