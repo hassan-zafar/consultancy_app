@@ -9,12 +9,15 @@ class CoursePage extends StatefulWidget {
 
 class _CoursePageState extends State<CoursePage> {
   String? chosenImg;
-  String ?chosenTitle;
+  String? chosenTitle;
+  String? details;
+
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
     chosenImg = arguments['img'];
     chosenTitle = arguments['title'];
+    details = arguments['details'];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -22,8 +25,8 @@ class _CoursePageState extends State<CoursePage> {
         leading: Container(
           padding: const EdgeInsets.all(5),
           decoration: const BoxDecoration(
-            borderRadius:  BorderRadius.all(Radius.circular(20)),
-            color:  Color(0xffe1eaff),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            color: Color(0xffe1eaff),
           ),
           child: IconButton(
             onPressed: () {
@@ -31,7 +34,7 @@ class _CoursePageState extends State<CoursePage> {
             },
             icon: const Icon(
               Icons.arrow_back_ios,
-              color:  Color(0xff2657ce),
+              color: Color(0xff2657ce),
             ),
           ),
         ),
@@ -49,7 +52,7 @@ class _CoursePageState extends State<CoursePage> {
               ),
             ),
             Text(
-              'Sarah Parknson',
+              'Consultancy',
               style:
                   TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 20),
             ),
@@ -78,61 +81,38 @@ class _CoursePageState extends State<CoursePage> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
-                  'Course',
-                  style:  TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Color(0xffd3defa),
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 35,
-                        child:  IconButton(
-                          icon: const Icon(
-                            Icons.timer,
-                            color: Colors.blue,
-                          ), onPressed: () {  },
-                        ),
-                      ),
-                      Text(
-                        "3 Hours, 20 Min",
-                        style: TextStyle(color: Colors.black.withOpacity(0.7)),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    productListing(
-                        'Introduction', 'Introduction of the course', 'active'),
-                    productListing('Language of Color',
-                        'Learn about the language of..', 'inactive'),
-                    productListing('Psychology of Color',
-                        'Learn about the psychology of..', 'inactive'),
-                    productListing('Language of Color',
-                        'Learn about the language of..', 'inactive')
-                  ],
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  details!,
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    color: Color(0xffff5954),
+                  ),
+                  child: Text('Message Us'),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    color: Colors.blue,
+                  ),
+                  child: Text('Start a Meeting'),
+                ),
+              ],
             )
           ],
         ),

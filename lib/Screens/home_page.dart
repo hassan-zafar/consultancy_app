@@ -11,9 +11,33 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff4f6fd),
+      backgroundColor: const Color(0xfff4f6fd),bottomSheet:      Container(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    IconButton(
+                      icon: const Icon(
+                        Icons.subscriptions,
+                        color: Color(0xff2657ce),
+                        size: 40,
+                      ),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.account_circle,
+                        color: const Color(0xff2657ce).withOpacity(0.5),
+                        size: 40,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              )
+           ,
       body: Container(
-        padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
+        padding: const EdgeInsets.only(top: 40, left: 30, right: 30,bottom: 100),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                 height: 25,
               ),
               const Text(
-                'What do you \nwant to \nlearn today?',
+                'How can we help \nyou Today?',
                 style: TextStyle(
                     fontSize: 35, height: 1.3, fontWeight: FontWeight.w700),
               ),
@@ -54,12 +78,12 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        courseWidget('Multimedia', 'Animation Course', 'img1',
+                        courseWidget('Preperation', 'Study Abroad','Consulancy regarding studying abraod\n Your Personal statement,\n research proposals,\n IELTS preps', 'img1',
                             const Color(0xffff6a65), const Color(0xffff5954)),
                         const SizedBox(
                           height: 20,
                         ),
-                        courseWidget('Social Media', 'Social Media Monitoring',
+                        courseWidget('Research', 'Masters and PhD','Consultancy in successful completion of research Projects for Masters and PhD students',
                             'img2', const Color(0xffe9eefa), Colors.white),
                       ],
                     ),
@@ -72,14 +96,14 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 50,
                         ),
-                        courseWidget('Programming', 'Python for everybody',
+                        courseWidget('Home Work', 'Bachelors and Masters','Consultancy in successfully completing home work for Bachelor and Master students',
                             'img3', const Color(0xffe9eefa), Colors.white),
                         const SizedBox(
                           height: 20,
                         ),
                         courseWidget(
-                            'Graphic Design',
-                            'Fundamentals of Design',
+                            'Skills',
+                            'CV Writing','Consultancy in drafting CV, writing reports, developing writing skills, data analysis',
                             'img4',
                             const Color(0xffbdcddf),
                             const Color(0xffcedaff)),
@@ -88,46 +112,16 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                      icon: const Icon(
-                        Icons.subscriptions,
-                        color: Color(0xff2657ce),
-                        size: 40,
-                      ),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.play_circle_filled,
-                        color: const Color(0xff2657ce).withOpacity(0.5),
-                        size: 40,
-                      ),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.account_circle,
-                        color: const Color(0xff2657ce).withOpacity(0.5),
-                        size: 40,
-                      ),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              )
-            ],
+            
+            
+          ],
           ),
         ),
       ),
     );
   }
 
-  Container courseWidget(String category, String title, String img,
+  Container courseWidget(String category, String title,String details, String img,
       Color categoryColor, Color bgColor) {
     return Container(
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
@@ -137,7 +131,7 @@ class _HomePageState extends State<HomePage> {
       ),
       child: InkWell(
         onTap: () {
-          openCoursePage(img, title);
+          openCoursePage(img, title,details);
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,8 +204,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void openCoursePage(String img, String title) {
+  void openCoursePage(String img, String title,String details) {
     Navigator.pushNamed(context, '/coursePage',
-        arguments: {'img': img, 'title': title});
+        arguments: {'img': img, 'title': title,'details':details});
   }
 }
