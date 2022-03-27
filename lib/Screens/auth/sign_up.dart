@@ -1,10 +1,10 @@
 import 'dart:io';
+import 'package:consultancy_app/Services/global_method.dart';
+import 'package:consultancy_app/consts/colors.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meditation_alive/consts/colors.dart';
-import 'package:meditation_alive/services/global_method.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String? url;
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  GlobalMethods _globalMethods = GlobalMethods();
+  final GlobalMethods _globalMethods = GlobalMethods();
   bool _isLoading = false;
   @override
   void dispose() {
@@ -137,12 +137,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                   durations: [19440, 10800],
                   heightPercentages: [0.20, 0.25],
-                  blur: MaskFilter.blur(BlurStyle.solid, 10),
+                  blur: const MaskFilter.blur(BlurStyle.solid, 10),
                   gradientBegin: Alignment.bottomLeft,
                   gradientEnd: Alignment.topRight,
                 ),
                 waveAmplitude: 0,
-                size: Size(
+                size: const Size(
                   double.infinity,
                   double.infinity,
                 ),
@@ -152,14 +152,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Stack(
                   children: [
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 30, horizontal: 30),
                       child: CircleAvatar(
                         radius: 71,
                         backgroundColor: ColorsConsts.gradiendLEnd,
@@ -178,9 +178,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: RawMaterialButton(
                           elevation: 10,
                           fillColor: ColorsConsts.gradiendLEnd,
-                          child: Icon(Icons.add_a_photo),
-                          padding: EdgeInsets.all(15.0),
-                          shape: CircleBorder(),
+                          child: const Icon(Icons.add_a_photo),
+                          padding: const EdgeInsets.all(15.0),
+                          shape: const CircleBorder(),
                           onPressed: () {
                             showDialog(
                                 context: context,
@@ -200,9 +200,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             splashColor: Colors.purpleAccent,
                                             child: Row(
                                               children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
+                                                const Padding(
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Icon(
                                                     Icons.camera,
                                                     color: Colors.purpleAccent,
@@ -225,9 +224,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             splashColor: Colors.purpleAccent,
                                             child: Row(
                                               children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
+                                                const Padding(
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Icon(
                                                     Icons.image,
                                                     color: Colors.purpleAccent,
@@ -249,10 +247,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             onTap: _remove,
                                             splashColor: Colors.purpleAccent,
                                             child: Row(
-                                              children: [
+                                              children: const [
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Icon(
                                                     Icons.remove_circle,
                                                     color: Colors.red,
@@ -285,7 +282,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: TextFormField(
-                          key: ValueKey('name'),
+                          key: const ValueKey('name'),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'name cannot be null';
@@ -299,7 +296,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               filled: true,
-                              prefixIcon: Icon(Icons.person),
+                              prefixIcon: const Icon(Icons.person),
                               labelText: 'Full name',
                               fillColor: Theme.of(context).backgroundColor),
                           onSaved: (value) {
@@ -310,7 +307,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: TextFormField(
-                          key: ValueKey('email'),
+                          key: const ValueKey('email'),
                           focusNode: _emailFocusNode,
                           validator: (value) {
                             if (value!.isEmpty || !value.contains('@')) {
@@ -325,7 +322,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               filled: true,
-                              prefixIcon: Icon(Icons.email),
+                              prefixIcon: const Icon(Icons.email),
                               labelText: 'Email Address',
                               fillColor: Theme.of(context).backgroundColor),
                           onSaved: (value) {
@@ -336,7 +333,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: TextFormField(
-                          key: ValueKey('Password'),
+                          key: const ValueKey('Password'),
                           validator: (value) {
                             if (value!.isEmpty || value.length < 7) {
                               return 'Please enter a valid Password';
@@ -348,7 +345,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               filled: true,
-                              prefixIcon: Icon(Icons.lock),
+                              prefixIcon: const Icon(Icons.lock),
                               suffixIcon: GestureDetector(
                                 onTap: () {
                                   setState(() {
@@ -372,7 +369,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: TextFormField(
-                          key: ValueKey('phone number'),
+                          key: const ValueKey('phone number'),
                           focusNode: _phoneNumberFocusNode,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -389,7 +386,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               filled: true,
-                              prefixIcon: Icon(Icons.phone_android),
+                              prefixIcon: const Icon(Icons.phone_android),
                               labelText: 'Phone number',
                               fillColor: Theme.of(context).backgroundColor),
                           onSaved: (value) {
@@ -400,9 +397,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           _isLoading
-                              ? CircularProgressIndicator()
+                              ? const CircularProgressIndicator()
                               : ElevatedButton(
                                   style: ButtonStyle(
                                       shape: MaterialStateProperty.all<
@@ -416,7 +413,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   onPressed: _submitForm,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                    children: const [
                                       Text(
                                         'Sign up',
                                         style: TextStyle(
@@ -432,7 +429,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       )
                                     ],
                                   )),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                         ],
                       ),
                     ],

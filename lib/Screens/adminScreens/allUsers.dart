@@ -1,4 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:consultancy_app/Models/users.dart';
+import 'package:consultancy_app/Services/authentication_service.dart';
+import 'package:consultancy_app/consts/collections.dart';
 import 'package:flutter/material.dart';
+import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+
+import '../../Widgets/custom_toast.dart';
+import '../../Widgets/loadingWidget.dart';
+import '../auth/landing_page.dart';
 
 class UserNSearch extends StatefulWidget {
   // final UserModel currentUser;
@@ -123,10 +132,10 @@ class _UserNSearchState extends State<UserNSearch>
               });
               return GlassContainer(
                 child: ListView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   children: <Widget>[
                     currentUser!.isAdmin!
-                        ? Container(
+                        ? SizedBox(
                             height: 100,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -141,7 +150,7 @@ class _UserNSearchState extends State<UserNSearch>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         child: GestureDetector(
                                           onTap: () {
                                             setState(() {
@@ -157,7 +166,7 @@ class _UserNSearchState extends State<UserNSearch>
                                               child: Text(
                                                 "All Users ${userResults.length}",
                                                 style:
-                                                    TextStyle(fontSize: 20.0),
+                                                    const TextStyle(fontSize: 20.0),
                                               ),
                                             ),
                                           ),
@@ -172,7 +181,7 @@ class _UserNSearchState extends State<UserNSearch>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         child: GestureDetector(
                                           onTap: () {
                                             setState(() {
@@ -188,7 +197,7 @@ class _UserNSearchState extends State<UserNSearch>
                                               child: Text(
                                                 "All Admins ${allAdmins.length}",
                                                 style:
-                                                    TextStyle(fontSize: 20.0),
+                                                    const TextStyle(fontSize: 20.0),
                                               ),
                                             ),
                                           ),
@@ -205,12 +214,12 @@ class _UserNSearchState extends State<UserNSearch>
                         ? Column(
                             children: allAdmins,
                           )
-                        : Text(""),
+                        : const Text(""),
                     typeSelected == 'users'
                         ? Column(
                             children: userResults,
                           )
-                        : Text(''),
+                        : const Text(''),
                   ],
                 ),
               );
@@ -230,8 +239,8 @@ class _UserNSearchState extends State<UserNSearch>
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.red,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding:  EdgeInsets.all(8.0),
                     child: Text("LogOut"),
                   )),
             ))

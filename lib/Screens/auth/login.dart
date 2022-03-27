@@ -1,7 +1,7 @@
+import 'package:consultancy_app/Services/global_method.dart';
+import 'package:consultancy_app/consts/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meditation_alive/consts/colors.dart';
-import 'package:meditation_alive/services/global_method.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String _password = '';
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  GlobalMethods _globalMethods = GlobalMethods();
+  final GlobalMethods _globalMethods = GlobalMethods();
   bool _isLoading = false;
   @override
   void dispose() {
@@ -71,12 +71,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                   durations: [19440, 10800],
                   heightPercentages: [0.20, 0.25],
-                  blur: MaskFilter.blur(BlurStyle.solid, 10),
+                  blur: const MaskFilter.blur(BlurStyle.solid, 10),
                   gradientBegin: Alignment.bottomLeft,
                   gradientEnd: Alignment.topRight,
                 ),
                 waveAmplitude: 0,
-                size: Size(
+                size: const Size(
                   double.infinity,
                   double.infinity,
                 ),
@@ -87,13 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: const EdgeInsets.only(top: 80),
                   height: 120.0,
                   width: 120.0,
                   decoration: BoxDecoration(
                     //  color: Theme.of(context).backgroundColor,
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: NetworkImage(
                         'https://image.flaticon.com/icons/png/128/869/869636.png',
                       ),
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: BoxShape.rectangle,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Form(
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: TextFormField(
-                            key: ValueKey('email'),
+                            key: const ValueKey('email'),
                             validator: (value) {
                               if (value!.isEmpty || !value.contains('@')) {
                                 return 'Please enter a valid email address';

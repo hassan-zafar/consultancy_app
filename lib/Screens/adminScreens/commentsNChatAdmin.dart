@@ -1,12 +1,12 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:consultancy_app/Models/users.dart';
+import 'package:consultancy_app/Services/notificationHandler.dart';
+import 'package:consultancy_app/Widgets/loadingWidget.dart';
+import 'package:consultancy_app/consts/collections.dart';
+import 'package:consultancy_app/consts/consants.dart';
 import 'package:flutter/material.dart';
-import 'package:meditation_alive/consts/collections.dart';
-import 'package:meditation_alive/consts/consants.dart';
-import 'package:meditation_alive/models/users.dart';
-import 'package:meditation_alive/services/notificationHandler.dart';
-import 'package:meditation_alive/widgets/loadingWidget.dart';
 // import 'package:timeago/timeago.dart' as timeago;
 import 'package:uuid/uuid.dart';
 
@@ -18,7 +18,7 @@ class CommentsNChatAdmin extends StatefulWidget {
   // final bool? isParent;
   final String? chatNotificationToken;
 //  final String userName;
-  CommentsNChatAdmin({
+   const CommentsNChatAdmin({Key? key, 
     // this.postId,
     // this.postMediaUrl,
     // this.postOwnerId,
@@ -28,7 +28,7 @@ class CommentsNChatAdmin extends StatefulWidget {
     // @required this.isPostComment,
     required this.chatNotificationToken,
     // @required this.isProductComment
-  });
+  }) : super(key: key);
   @override
   CommentsNChatAdminState createState() => CommentsNChatAdminState();
 }
@@ -93,7 +93,7 @@ class CommentsNChatAdminState extends State<CommentsNChatAdmin> {
               .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return LoadingIndicator();
+          return const LoadingIndicator();
         }
 
         List<CommentsNMessages> chatMessages = [];
@@ -217,7 +217,7 @@ class CommentsNMessages extends StatefulWidget {
   final Timestamp? timestamp;
   final String? commentId;
   final String? androidNotificationToken;
-  CommentsNMessages({
+  const CommentsNMessages({
     this.userName,
     this.userId,
     this.avatarUrl,

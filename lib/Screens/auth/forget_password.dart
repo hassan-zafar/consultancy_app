@@ -1,5 +1,7 @@
+import 'package:consultancy_app/Services/global_method.dart';
+import 'package:consultancy_app/Widgets/custom_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';]
+import 'package:flutter/material.dart';
 
 class ForgetPassword extends StatefulWidget {
   static const routeName = '/ForgetPassword';
@@ -12,7 +14,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   String _emailAddress = '';
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  GlobalMethods _globalMethods = GlobalMethods();
+  final GlobalMethods _globalMethods = GlobalMethods();
   bool _isLoading = false;
   void _submitForm() async {
     final isValid = _formKey.currentState!.validate();
@@ -25,7 +27,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       try {
         await _auth
             .sendPasswordResetEmail(email: _emailAddress.trim().toLowerCase())
-            .then((value) => messageToast("An email has been sent"));
+            .then((value) => CustomToast.successToast(message: "An email has been sent"));
 
         // ignore: unnecessary_statements
         Navigator.canPop(context) ? Navigator.pop(context) : null;
