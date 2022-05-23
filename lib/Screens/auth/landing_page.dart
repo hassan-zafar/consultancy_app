@@ -62,7 +62,9 @@ class _LandingPageState extends State<LandingPage>
     try {
       final bool _login = await DatabaseMethods().loginAnonymosly();
       if (_login) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreens(),));
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MainScreens(),
+        ));
       } else {
         Navigator.of(context).pop();
       }
@@ -96,11 +98,11 @@ class _LandingPageState extends State<LandingPage>
         alignment: FractionalOffset(_animation!.value, 0),
       ),
       Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               'Welcome',
               style: TextStyle(
@@ -114,7 +116,7 @@ class _LandingPageState extends State<LandingPage>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                'Welcome to Meditation Alive',
+                'Welcome to Consultancy App',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 26,
@@ -142,11 +144,15 @@ class _LandingPageState extends State<LandingPage>
                       ),
                     )),
                     onPressed: () {
-                      Navigator.pushNamed(context, LoginScreen.routeName);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           'Login',
                           style: TextStyle(
@@ -177,11 +183,15 @@ class _LandingPageState extends State<LandingPage>
                           ),
                         )),
                     onPressed: () {
-                      Navigator.pushNamed(context, SignUpScreen.routeName);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUpScreen(),
+                          ));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           'Sign up',
                           style: TextStyle(
@@ -197,17 +207,17 @@ class _LandingPageState extends State<LandingPage>
                       ],
                     )),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
-            children: [
+            children: const [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     thickness: 2,
@@ -220,7 +230,7 @@ class _LandingPageState extends State<LandingPage>
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     thickness: 2,
@@ -229,45 +239,46 @@ class _LandingPageState extends State<LandingPage>
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              OutlineButton(
-                onPressed: () async {
-                  final bool? _login =
-                      await AuthenticationService().signinWithGoogle();
-                  if (_login!) {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => MainScreens(),
-                    ));
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                },
-                shape: StadiumBorder(),
-                highlightedBorderColor: Colors.red.shade200,
-                borderSide: BorderSide(width: 2, color: Colors.red),
-                child: Text('Google +'),
-              ),
+              // OutlineButton(
+              //   onPressed: () async {
+              //     final bool? _login =
+              //         await AuthenticationService().signinWithGoogle();
+              //     if (_login!) {
+              //       Navigator.of(context).pushReplacement(MaterialPageRoute(
+              //         builder: (context) => MainScreens(),
+              //       ));
+              //     } else {
+              //       Navigator.of(context).pop();
+              //     }
+              //   },
+              //   shape: const StadiumBorder(),
+              //   highlightedBorderColor: Colors.red.shade200,
+              //   borderSide: const BorderSide(width: 2, color: Colors.red),
+              //   child: const Text('Google +'),
+              // ),
+
               _isLoading
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : OutlineButton(
                       onPressed: () {
                         _loginAnonymosly();
                         // Navigator.pushNamed(context, BottomBarScreen.routeName);
                       },
-                      shape: StadiumBorder(),
+                      shape: const StadiumBorder(),
                       highlightedBorderColor: Colors.deepPurple.shade200,
                       borderSide:
-                          BorderSide(width: 2, color: Colors.deepPurple),
-                      child: Text('Sign in as a guest'),
+                          const BorderSide(width: 2, color: Colors.deepPurple),
+                      child: const Text('Sign in as a guest'),
                     ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
         ],

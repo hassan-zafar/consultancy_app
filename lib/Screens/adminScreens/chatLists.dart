@@ -27,7 +27,7 @@ class _ChatListsState extends State<ChatLists> {
               chatListRef.orderBy("timestamp", descending: true).snapshots(),
           builder: (context, snapshots) {
             if (!snapshots.hasData) {
-              return LoadingIndicator();
+              return const LoadingIndicator();
             }
             List<CommentsNMessages> chatHeads = [];
             print(snapshots.data!.docs.length);
@@ -38,17 +38,17 @@ class _ChatListsState extends State<ChatLists> {
               print(chatHeads);
             });
             if (snapshots.data == null || chatHeads.isEmpty) {
-              return Center(
-                child: Text(
+              return const Center(
+                child:  Text(
                   "No Active Chat Heads!!",
                   style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               );
             }
 
             return ListView.builder(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemCount: chatHeads.length,
               itemBuilder: (context, index) {

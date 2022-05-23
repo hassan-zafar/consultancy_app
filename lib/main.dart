@@ -1,12 +1,12 @@
 import 'package:consultancy_app/Screens/home_page.dart';
-import 'package:consultancy_app/Screens/home_screen.dart';
+import 'package:consultancy_app/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'Screens/courses_screen.dart';
-
+import 'Screens/user_state.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   "high_importance_channel",
@@ -37,9 +37,8 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -61,7 +60,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home:  const UserState(),
       routes: {
         '/coursePage': (context) => const CoursePage(),
       },

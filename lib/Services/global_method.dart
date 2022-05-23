@@ -27,13 +27,13 @@ class GlobalMethods {
             actions: [
               TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text('Cancel')),
+                  child: const Text('Cancel')),
               TextButton(
                   onPressed: () {
                     fct();
                     Navigator.pop(context);
                   },
-                  child: Text('ok'))
+                  child: const Text('ok'))
             ],
           );
         });
@@ -54,20 +54,19 @@ class GlobalMethods {
                     width: 20,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text('Error occured'),
                 ),
               ],
             ),
             content: Text(subtitle),
             actions: [
-            
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('Ok'))
+                  child: const Text('Ok'))
             ],
           );
         });

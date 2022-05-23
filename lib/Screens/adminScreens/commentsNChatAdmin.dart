@@ -109,7 +109,7 @@ class CommentsNChatAdminState extends State<CommentsNChatAdmin> {
   }
 
   addChatMessage() {
-    String commentId = Uuid().v1();
+    String commentId = const Uuid().v1();
     if (_commentNMessagesController.text.trim().length > 1) {
       chatRoomRef
           .doc(currentUser!.isAdmin != null && currentUser!.isAdmin == true
@@ -183,17 +183,17 @@ class CommentsNChatAdminState extends State<CommentsNChatAdmin> {
             Expanded(
               child: buildChat(),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
               title: TextFormField(
                 controller: _commentNMessagesController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Write a message...",
                 ),
               ),
               trailing: IconButton(
                 onPressed: addChatMessage,
-                icon: Icon(
+                icon: const Icon(
                   Icons.send,
                   size: 40.0,
                 ),
@@ -246,7 +246,7 @@ class _CommentsNMessagesState extends State<CommentsNMessages> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12, right: 12, left: 12),
+      padding: const EdgeInsets.only(bottom: 12, right: 12, left: 12),
       child: buildMessageBubble(context),
     );
   }
@@ -260,15 +260,15 @@ class _CommentsNMessagesState extends State<CommentsNMessages> {
         decoration: BoxDecoration(
           color: isMe ? Colors.orange : Colors.brown,
           borderRadius: isMe
-              ? BorderRadius.only(
+              ? const BorderRadius.only(
                   bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomRight:  Radius.circular(20),
                   topLeft: Radius.circular(20),
                 )
-              : BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                  topRight: Radius.circular(20),
+              : const BorderRadius.only(
+                  bottomLeft:  Radius.circular(20),
+                  bottomRight:  Radius.circular(20),
+                  topRight:  Radius.circular(20),
                 ),
         ),
         child: Padding(
@@ -286,7 +286,7 @@ class _CommentsNMessagesState extends State<CommentsNMessages> {
                               CachedNetworkImageProvider(widget.avatarUrl!),
                         )
                       : CircleAvatar(backgroundImage: AssetImage(logo)),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Expanded(
@@ -300,14 +300,14 @@ class _CommentsNMessagesState extends State<CommentsNMessages> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text("${widget.userName} : ",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14.0,
                                     color: Colors.white)),
                             Flexible(
                               child: Text(
                                 "${widget.comment}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 14.0, color: Colors.white),
                               ),
                             ),

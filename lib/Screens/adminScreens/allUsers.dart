@@ -51,13 +51,13 @@ class _UserNSearchState extends State<UserNSearch>
         controller: searchController,
         decoration: InputDecoration(
             hintText: "Search",
-            hintStyle: TextStyle(color: Colors.black),
-            prefixIcon: Icon(
+            hintStyle: const TextStyle(color: Colors.black),
+            prefixIcon: const Icon(
               Icons.search,
               color: Colors.black,
             ),
             suffixIcon: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.clear,
                 color: Colors.black,
               ),
@@ -73,7 +73,7 @@ class _UserNSearchState extends State<UserNSearch>
       future: searchResultsFuture,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return LoadingIndicator();
+          return const LoadingIndicator();
         }
         List<UserResult> searchResults = [];
         snapshot.data!.docs.forEach((doc) {
@@ -113,7 +113,7 @@ class _UserNSearchState extends State<UserNSearch>
             stream: userRef.snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return LoadingIndicator();
+                return const LoadingIndicator();
               }
               List<UserResult> userResults = [];
               List<UserResult> allAdmins = [];
@@ -265,13 +265,13 @@ class UserResult extends StatelessWidget {
                 opacity: 0.6,
                 shadowStrength: 8,
                 child: ListTile(
-                  leading: CircleAvatar(
+                  leading: const CircleAvatar(
                     backgroundColor: Colors.grey,
                     child: Icon(Icons.person),
                   ),
                   title: Text(
                     user.name.toString(),
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     user.name.toString(),
@@ -300,7 +300,7 @@ class UserResult extends StatelessWidget {
                         Navigator.pop(context);
                         makeAdminFunc("Rank changed to User");
                       },
-                      child: Text(
+                      child: const Text(
                         'Make User',
                       ),
                     )
@@ -309,7 +309,7 @@ class UserResult extends StatelessWidget {
                         Navigator.pop(context);
                         makeAdminFunc("Upgraded to Admin");
                       },
-                      child: Text(
+                      child: const Text(
                         'Make Admin',
                       ),
                     ),
@@ -318,14 +318,14 @@ class UserResult extends StatelessWidget {
                   Navigator.pop(context);
                   deleteUser(user.email!, user.password!);
                 },
-                child: Text(
+                child: const Text(
                   'Delete User',
-                  style: TextStyle(color: Colors.red),
+                  style: const TextStyle(color: Colors.red),
                 ),
               ),
               SimpleDialogOption(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
+                child: const Text('Cancel'),
               )
             ],
           );

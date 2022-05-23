@@ -50,12 +50,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 80,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child:  Text(
               'Forget password',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
@@ -65,7 +65,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: Form(
               key: _formKey,
               child: TextFormField(
-                key: ValueKey('email'),
+                key: const ValueKey('email'),
                 validator: (value) {
                   if (value!.isEmpty || !value.contains('@')) {
                     return 'Please enter a valid email address';
@@ -77,7 +77,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 decoration: InputDecoration(
                     border: const UnderlineInputBorder(),
                     filled: true,
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                     labelText: 'Email Address',
                     fillColor: Theme.of(context).backgroundColor),
                 onSaved: (value) {
@@ -86,13 +86,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: _isLoading
-                ? Align(
+                ? const Align(
                     alignment: Alignment.center,
                     child: CircularProgressIndicator(
                       color: Colors.green,
@@ -111,15 +111,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Reset password',
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 17),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.lock,
                           size: 18,
                         )

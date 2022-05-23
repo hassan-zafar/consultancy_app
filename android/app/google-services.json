@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "114773186838",
+    "project_id": "consultancy-app-fe01d",
+    "storage_bucket": "consultancy-app-fe01d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114773186838:android:cdc52883bc23b36b909837",
+        "android_client_info": {
+          "package_name": "com.hassan.consultancy_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114773186838-oiks73oqj6orhbqtded80iu33k11p5f7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hassan.consultancy_app",
+            "certificate_hash": "d3984de38e8552e8a961dbb0688d5693105fc273"
+          }
+        },
+        {
+          "client_id": "114773186838-7cve48s6r2u6mvip277388va9fpduorl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOQIcbVutigJ8VreDyhn4LDgz-ZcbyfwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114773186838-7cve48s6r2u6mvip277388va9fpduorl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
